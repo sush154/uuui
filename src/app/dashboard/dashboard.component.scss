@@ -1,0 +1,38 @@
+
+.nav-tabs .nav-item {
+  background: #eceeff;
+  width: 50%;
+}
+
+.nav-tabs .nav-item .nav-link {
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.nav-link.active {
+  background: #c2c6fb;
+  font-weight: bold;
+  font-size: 25px;
+  align-items: center;
+  border-top: 5px solid #000;
+}
+
+.tab-content {
+  font-size: 20px;
+}
+
+.h1-responsive {
+  color: #1c2a48;
+};
+
+.card-text {
+  color: #2E2E2E !important;
+  margin-top: 20px;
+  font-size: 16px !important;
+}
+
+.fa-plus-circle {
+  padding: 0 20px 20px 0;
+  color: #0d47a1;
+}

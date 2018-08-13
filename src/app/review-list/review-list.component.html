@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/dashboard">Home
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+
+      <i class="fa fa-tasks fa-2x white-text" aria-hidden="true" routerLink="/review-list"></i>
+
+  </nav>
+  <!--/.Navbar-->
+</div>
+
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <div class="p-2">
+          <select class="form-control">
+              <option value="" selected>Choose Status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+          </select>
+      </div>
+    </div>
+
+    <ul class="list-group mt-3">
+      <li class="cursor list-group-item waves-effect" *ngFor="let review of reviewsList" routerLink="/review-details/{{review.submissionId}}">
+        <div class="row">
+          <div class="col-3">{{review.submissionId}}</div>
+          <div class="col-9">{{review.submittedBy.name}}</div>
+        </div>
+      </li>
+    </ul>
+    <a routerLink="/review-details/S-001">Do review</a>
+
+    <div *ngIf="reviewsList?.length === 0">
+        <h1>No Reviews are available yet !</h1>
+    </div>
+  </div>

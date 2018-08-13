@@ -1,0 +1,45 @@
+<toaster-container></toaster-container>
+<div class="container">
+
+  <div class="loader-parent" *ngIf="loading">
+    <loaders-css [loader]="'ball-clip-rotate'" [loaderClass]="'my-loader'"></loaders-css>
+  </div>
+
+  <div class="p-t-5">
+    <!-- Card -->
+    <div class="card">
+
+      <!-- Card content -->
+      <div class="card-body">
+
+        <!-- Title -->
+        <h1 class="card-title">LOGIN</h1>
+        <!-- Material input -->
+        <div>
+          <div class="md-form form-lg">
+            <input type="email" id="userName" class="form-control form-control-lg" [(ngModel)]="userName" required>
+            <label for="userName">User Name</label>
+          </div>
+
+          <div class="md-form form-lg">
+            <input type="password" id="password" class="form-control form-control-lg" [(ngModel)]="password" required>
+            <label for="password">Password</label>
+          </div>
+
+          <div style="display: grid;">
+            <button type="button" class="btn btn-indigo btn-lg float-right" (click)="login()">Login</button>
+          </div>
+        </div>
+
+        <div class="thin-line"></div>
+
+        <div style="display: grid;">
+          <button type="button" class="btn btn-indigo btn-lg float-right" routerLink="/register">Register</button>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Card -->
+  </div>
+</div>

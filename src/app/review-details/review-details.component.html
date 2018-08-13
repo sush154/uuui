@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/dashboard">Home
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+
+      <i class="fa fa-tasks fa-2x white-text" aria-hidden="true" routerLink="/review-list"></i>
+
+  </nav>
+  <!--/.Navbar-->
+</div>
+
+
+<div class="container">
+
+  <toaster-container></toaster-container>
+
+  <div class="loader-parent" *ngIf="loading">
+    <loaders-css [loader]="'ball-clip-rotate'" [loaderClass]="'my-loader'"></loaders-css>
+  </div>
+
+  <button type="button" class="btn btn-unique btn-sm" (click)="goBack()">Back</button>
+  <button type="button" class="btn btn-unique btn-sm" *ngIf="reviewDetails && loggedInUserId == reviewDetails.submittedBy._id"
+    (click)="goBack()">Delete</button>
+
+  <dl class="row" *ngIf="reviewDetails">
+    <dt class="col-sm-3">Submitted By:</dt>
+    <dd class="col-sm-9">{{reviewDetails.submittedBy.name}}</dd>
+
+    <dt class="col-sm-3">Steps: </dt>
+    <dd class="col-sm-9">{{reviewDetails.todaysSteps}}</dd>
+
+    <dt class="col-sm-3">Image:</dt>
+    <dd class="col-sm-9" *ngIf="reviewDetails.image; else noImage">
+      <img src="getImage(reviewDetails.image)" class="img-fluid" alt="Responsive image">
+    </dd>
+    <dd #noImage class="col-sm-9">
+      No Image Available!
+    </dd>
+
+  </dl>
+
+  <div class="fixed-bottom">
+      <button type="button" class="btn btn-elegant float-right" [class.disabled]="!(reviewDetails && loggedInUserId == reviewDetails.submittedBy._id)"
+        (click)="approve()">Approve</button>
+      <button type="button" class="btn btn-danger"
+        data-toggle="modal" data-target="#basicExampleModal">Reject</button>
+  </div>
+
+</div>
+
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rejection Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="md-form">
+          <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" [(ngModel)]="comment"></textarea>
+          <label for="message">Your Comment</label>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="reject()">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>
+

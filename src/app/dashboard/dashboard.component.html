@@ -1,0 +1,140 @@
+<toaster-container></toaster-container>
+
+<div class="container-fluid">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/dashboard">Home
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+
+      <i class="fa fa-tasks fa-2x white-text" aria-hidden="true" routerLink="/review-list"></i>
+
+  </nav>
+  <!--/.Navbar-->
+</div>
+
+<div class="container mt-3">
+    <div class="loader-parent" *ngIf="loading">
+      <loaders-css [loader]="'ball-clip-rotate'" [loaderClass]="'my-loader'"></loaders-css>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#orders" data-toggle="tab">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#products" data-toggle="tab">Rankings</a>
+        </li>
+
+    </ul>
+
+    <div class="tab-content mt-5">
+        <div class="tab-pane active m-t-20px" id="orders">
+            <!-- Card deck -->
+            <div class="card-deck">
+
+              <!-- Card -->
+              <div class="card mb-4">
+
+                <!--Card content-->
+                <div class="card-body">
+
+                  <!--Title-->
+                  <h3 class="h3">Your Total Steps</h3>
+                  <!--Text-->
+                  <p class="card-text">{{userTotalSteps}}</p>
+
+                </div>
+
+              </div>
+              <!-- Card -->
+
+              <!-- Card -->
+              <div class="card mb-4">
+                <!--Card content-->
+                <div class="card-body">
+
+                  <!--Title-->
+                  <h3 class="h3">Total Steps by Participants</h3>
+                  <!--Text-->
+                  <p class="card-text">{{totalParticipantSteps}}</p>
+
+                </div>
+
+              </div>
+              <!-- Card -->
+
+              <!-- Card -->
+              <div class="card mb-4">
+
+                <!--Card content-->
+                <div class="card-body">
+
+                  <!--Title-->
+                  <h3 class="h3">Current Leader</h3>
+                  <!--Text-->
+                  <p class="card-text" *ngIf="currentLeader">{{currentLeader.name}}</p>
+
+                </div>
+
+              </div>
+              <!-- Card -->
+
+            </div>
+            <!-- Card deck -->
+
+        </div>
+        <div class="tab-pane m-t-20px" id="products">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="black white-text">
+                <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Total Steps</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let rank of rankings; index as i">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{rank.name}}</td>
+                  <td>{{rank.totalSteps}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr *ngIf="rankings?.length === 0">
+                  <td colspan="3">
+                      <h1>No Rankings are available yet !</h1>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="fixed-bottom">
+  <i class="fa fa-plus-circle fa-4x float-right" aria-hidden="true" routerLink="/add-review"></i>
+</div>

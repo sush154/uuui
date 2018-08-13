@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/dashboard">Home
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+
+      <i class="fa fa-tasks fa-2x white-text" aria-hidden="true" routerLink="/review-list"></i>
+
+  </nav>
+  <!--/.Navbar-->
+</div>
+
+<div class="container">
+  <toaster-container></toaster-container>
+
+  <div class="loader-parent" *ngIf="loading">
+    <loaders-css [loader]="'ball-clip-rotate'" [loaderClass]="'my-loader'"></loaders-css>
+  </div>
+
+  <button type="button" class="btn btn-unique btn-sm" (click)="goBack()">Back</button>
+
+  <dl class="row">
+    <dt class="col-sm-3">Submitted Date:</dt>
+    <dd class="col-sm-9"></dd>
+
+    <dt class="col-sm-3">Steps: </dt>
+    <dd class="col-sm-9">
+      <div class="md-form">
+        <input type="number" id="stepsInp" class="form-control" [(ngModel)]="steps">
+        <label for="stepsInp">Steps</label>
+    </div>
+    </dd>
+
+    <dt class="col-sm-3">Image:</dt>
+    <dd class="col-sm-9">
+      <div>
+
+      </div>
+      <button type="button" class="btn btn-primary btn-sm">Add Image</button>
+    </dd>
+
+  </dl>
+</div>

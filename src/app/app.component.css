@@ -1,0 +1,9 @@
+.padding-top-50 {
+  padding-top: 50%;
+}
+
+@media (min-width: 992px) {
+  .padding-top-50 {
+    padding-top: 15%;
+  }
+}
